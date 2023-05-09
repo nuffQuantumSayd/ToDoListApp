@@ -21,11 +21,23 @@ item.dueDate = new Date(2020, 6, 1);
 item.completed = false;
 */
 
+window.onload = function(){
+    let addItem = $("add");
+    addItem.onclick = main;
+}
+
+function main(){
+    if(isValid()){
+        let item = getToDoItem();
+        displayToDoItem(item);
+    }
+}
+
 /**
  * Check form data is valid
  */
 function isValid():boolean{
-
+    return true;
 }
 
 /**
@@ -33,16 +45,50 @@ function isValid():boolean{
  * a ToDoItem object
  */
 function getToDoItem():ToDoItem{
-    let titleInputValue = (<HTMLInputElement>$("title")).value;
-    let dateInputValue = (<HTMLInputElement>$("due-date")).value;
-    
+    let myItem = new ToDoItem();
+    //gets the values
+
+    //title
+    let titleInputValue = $("title").value;
+    myItem.title = titleInputValue;
+
+    //date
+    let dateInputValue = $("due-date").value;
+    myItem.dueDate = new Date(dateInputValue);
+
+    //get completed
+    let completedInputValue = $("is-complete");
+    myItem.completed = completedInputValue.checked;
+
+    return myItem;
 }
 
 /**
  * Display given ToDoItem on the web page
  */
 function displayToDoItem(item:ToDoItem):void{
+    let itemText = document.createElement("h3");
+    itemText.innerText = item.title;
 
+    let itemDate = document.createElement("p");
+    itemDate.innerText = item.dueDate.toString();
+
+    let itemDiv = document.createElement("div");
+    if(item.completed){
+        itemDiv.classList.add("completed");
+    }
+
+    itemDiv.appendChild(itemText);
+    itemDiv.appendChild(itemDate);
+
+    if(item.completed){
+        let completedToDos = document.getElementById("complete-items");
+        completedToDos.appendChild(itemDiv);
+    }
+    else{
+        let incompleteToDos = document.getElementById("incomplete-items");
+        incompleteToDos.appendChild(itemDiv);
+    }
 }
 
 /**
@@ -50,8 +96,8 @@ function displayToDoItem(item:ToDoItem):void{
  * @param id 
  * @returns target element
  */
-function $(id:string):HTMLElement{
-    return <HTMLElement>document.getElementById(id);
+function $(id:string):HTMLInputElement{
+    return <HTMLInputElement>document.getElementById(id);
 }
 
 //Task: Allow user to mark a ToDoItem as completed
