@@ -3,8 +3,8 @@ const picker = datepicker('#due-date');
 picker.setMin(new Date()); //set to todays date
 
 class ToDoItem{
-    title:string,
-    dueDate:Date,
+    title:string;
+    dueDate:Date;
     completed:boolean;
 
     /*
@@ -74,6 +74,8 @@ function displayToDoItem(item:ToDoItem):void{
     itemDate.innerText = item.dueDate.toString();
 
     let itemDiv = document.createElement("div");
+    itemDiv.classList.add("todo");
+
     if(item.completed){
         itemDiv.classList.add("completed");
     }
