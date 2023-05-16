@@ -23,7 +23,16 @@
 #complete-items{
     border: .2em solid blue;
 }
+
 #incomplete-items{
     border: .2em solid black;
     margin-bottom: 1em;
+}
+
+#complete-items, 
+#incomplete-items{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
