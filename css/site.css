@@ -1,3 +1,41 @@
+body{
+    background-color: lightgray;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 20%;
+    margin-right: 20%;
+    padding: 0px;
+}
+body h1{
+    text-align: center;
+}
+body label{
+    display: block;
+    margin: 1em;
+}
+body span{
+    color: red;
+}
+body input{
+    margin: 1em;
+    box-sizing: border-box;
+    padding: .5em;
+    border: none;
+    border-radius: .75em;
+}
+#inputs > input{
+    width: 75%;
+}
+#add{
+    width: 25%;
+}
+
+body input[type="button"]{
+    cursor: pointer;
+}
+body input[type="button"]:hover{
+    background-color: rgb(188, 202, 206);
+    color: white;
+}
 .todo{
     width: 20%;
     box-sizing: border-box;
